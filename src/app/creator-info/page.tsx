@@ -6,7 +6,7 @@ import { ArrowLeft, Mail, User, MapPin, Heart } from "lucide-react";
 import Link from 'next/link';
 import { ThemeToggle } from "@/components/theme-toggle";
 
-const CreatorInfoPage = () => {
+export default function CreatorInfoPage() {
   return (
     <div className="flex min-h-screen w-full flex-col bg-background text-foreground font-body">
       <header className="sticky top-0 z-10 w-full border-b bg-background/80 backdrop-blur-sm">
@@ -46,4 +46,28 @@ const CreatorInfoPage = () => {
                   <p>
                     Bu uygulama, günlük hayatta karşılaşılan zorlukları tek bir tıkla çözerek Türk halkının yaşamını kolaylaştırmak amacıyla tasarlanmıştır.
                   </p>
-                  <
+                  <div className="w-full border-t border-border my-2"></div>
+                  <p>
+                    Bir öneriniz, fikriniz mi var ya da sadece selam mı vermek istiyorsunuz?
+                    Benimle iletişime geçmekten çekinmeyin. Geri bildiriminiz çok değerli!
+                  </p>
+                  <a href="mailto:menteglobalempresarial@gmail.com" className="w-full max-w-md">
+                    <Button size="lg" className="w-full font-bold text-base bg-gradient-to-r from-primary to-accent text-primary-foreground transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-primary/30">
+                        <Mail className="mr-2" />
+                        menteglobalempresarial@gmail.com
+                    </Button>
+                  </a>
+                </CardContent>
+              </Card>
+        </section>
+      </main>
+      <footer className="border-t bg-background/80">
+        <div className="container mx-auto flex h-14 items-center justify-center p-4">
+          <p className="text-xs text-muted-foreground">
+            Günlük Türkçe Lezzetler
+          </p>
+        </div>
+      </footer>
+    </div>
+  );
+}
