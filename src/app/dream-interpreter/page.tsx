@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState } from 'react';
@@ -114,3 +113,14 @@ export default function DreamInterpreterPage() {
                 </CardContent>
             </Card>
         </section>
+      </main>
+      <footer className="border-t bg-background/80">
+        <div className="container mx-auto flex h-14 items-center justify-center p-4">
+          <p className="text-xs text-muted-foreground">
+            Geliştirici: Lucas Leandro Guzmán
+          </p>
+        </div>
+      </footer>
+    </>
+  );
+}
