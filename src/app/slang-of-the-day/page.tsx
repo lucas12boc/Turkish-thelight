@@ -6,10 +6,9 @@ import { SlangCard } from "@/components/slang-card";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useToast } from "@/hooks/use-toast";
-import { ArrowLeft, RefreshCw } from "lucide-react";
-import Link from "next/link";
+import { RefreshCw } from "lucide-react";
 import { useEffect, useState, useTransition } from "react";
-import { ThemeToggle } from "@/components/theme-toggle";
+import { PageHeader } from "@/components/page-header";
 
 export default function SlangOfTheDayPage() {
   const [slangData, setSlangData] = useState<SlangOfTheDayOutput | null>(null);
@@ -38,30 +37,16 @@ export default function SlangOfTheDayPage() {
   }, []);
 
   return (
-    <div className="flex min-h-screen w-full flex-col bg-background text-foreground font-body">
-      <header className="sticky top-0 z-10 w-full border-b bg-background/80 backdrop-blur-sm">
-        <div className="container mx-auto flex h-20 items-center justify-between px-4 md:px-6">
-          <Link href="/" passHref>
-             <Button variant="ghost" size="icon">
-                <ArrowLeft />
-             </Button>
-          </Link>
-          <div className="flex flex-col items-center gap-1 text-center">
-            <h1 className="text-4xl font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent sm:text-5xl">
-              Günün Argosu
-            </h1>
-            <p className="text-sm text-muted-foreground">
-              Geri kalma!
-            </p>
-          </div>
-          <div className="flex items-center gap-2">
-            <Button variant="ghost" size="icon" onClick={fetchSlang} disabled={isPending}>
-                  <RefreshCw className={isPending ? "animate-spin" : ""} />
-            </Button>
-            <ThemeToggle />
-          </div>
-        </div>
-      </header>
+    <>
+      <PageHeader
+        title="Günün Argosu"
+        subtitle="Geri kalma!"
+        actions={
+          <Button variant="ghost" size="icon" onClick={fetchSlang} disabled={isPending}>
+            <RefreshCw className={isPending ? "animate-spin" : ""} />
+          </Button>
+        }
+      />
       <main className="flex-1">
         <section className="container mx-auto max-w-4xl px-4 py-8 md:px-6 md:py-12">
           {isPending && !slangData ? (
@@ -93,6 +78,6 @@ export default function SlangOfTheDayPage() {
           </p>
         </div>
       </footer>
-    </div>
+    </>
   );
 }
