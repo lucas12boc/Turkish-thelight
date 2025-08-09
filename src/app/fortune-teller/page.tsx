@@ -1,15 +1,14 @@
-   "use client";
+"use client";
 
 import { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Coffee, Upload, ArrowLeft } from "lucide-react";
+import { Coffee, Upload } from "lucide-react";
 import Image from 'next/image';
 import { tellFortune } from '@/ai/flows/fortune-teller-flow';
 import { useToast } from '@/hooks/use-toast';
 import { cn } from '@/lib/utils';
-import Link from 'next/link';
-import { ThemeToggle } from '@/components/theme-toggle';
+import { PageHeader } from '@/components/page-header';
 
 export default function FortuneTellerPage() {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
@@ -76,25 +75,11 @@ export default function FortuneTellerPage() {
   );
 
   return (
-    <div className="flex min-h-screen w-full flex-col bg-background text-foreground font-body">
-      <header className="sticky top-0 z-10 w-full border-b bg-background/80 backdrop-blur-sm">
-        <div className="container mx-auto flex h-20 items-center justify-between px-4 md:px-6">
-           <Link href="/" passHref>
-             <Button variant="ghost" size="icon">
-                <ArrowLeft />
-             </Button>
-          </Link>
-          <div className="flex flex-col items-center gap-1 text-center">
-            <h1 className="text-4xl font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent sm:text-5xl">
-              Fal Yorumu
-            </h1>
-            <p className="text-sm text-muted-foreground flex items-center gap-2">
-              Kaderinizi keşfedin
-            </p>
-          </div>
-          <ThemeToggle />
-        </div>
-      </header>
+    <>
+      <PageHeader 
+        title="Fal Yorumu"
+        subtitle="Kaderinizi keşfedin"
+      />
       <main className="flex-1">
         <section className="container mx-auto max-w-2xl px-4 py-8 md:px-6 md:py-12 flex flex-col items-center gap-8">
             <Card className="w-full bg-transparent border-0 shadow-none">
@@ -164,6 +149,6 @@ export default function FortuneTellerPage() {
           </p>
         </div>
       </footer>
-    </div>
+    </>
   );
-}               
+}
